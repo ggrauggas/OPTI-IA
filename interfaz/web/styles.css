@@ -1,0 +1,120 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal de la página */
+#auth-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título principal */
+h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los formularios */
+h3 {
+    color: #2b6cb0;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Inputs */
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+/* Botones */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para los contenedores de formularios */
+#register-container, #login-container, #verification-container {
+    margin-bottom: 20px;
+}
+
+/* Mensajes de estado */
+#verification-message {
+    font-size: 16px;
+    color: #f44336;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el botón de cerrar sesión */
+button:last-of-type {
+    background-color: #f44336;
+    width: auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:last-of-type:hover {
+    background-color: #e53935;
+}
+
+/* Estilo responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+    #auth-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    input[type="email"], input[type="password"], button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
