@@ -1,26 +1,54 @@
 {
+    "idioma": "Español",
     "querys": {
         "solo_codigo": {
-            "idioma": "Español",
-            "query": "Genera únicamente el código necesario para esta tarea sin explicaciones ni comentarios: "
+            "lenguaje": "Python",
+            "query": "Genera únicamente el código necesario para esta tarea en el lenguaje {lenguaje}, sin explicaciones. Si es necesario, agrega comentarios directamente en el código para facilitar su comprensión: "
         }, 
         "parafraseo_formal": {
-            "idioma": "Español",
-            "query": "Reescribe el siguiente texto en un tono formal y profesional: "
+            "query": "Reescribe el siguiente texto de manera formal y profesional, manteniendo el significado original y mejorando la estructura: "
         },   
         "correccion": {
-            "idioma": "Español",
-            "query": "Corrige los errores ortográficos y gramaticales en el siguiente texto: "
+            "query": "Corrige los errores ortográficos, gramaticales y de estilo en el siguiente texto. Asegúrate de que sea coherente y fluido: "
         },
         "translate": {
             "idioma_origen": "Detectar",
             "idioma_traducido": "Español",
-            "query": "Traduce el siguiente texto del {idioma_origen} al {idioma_traducido}: "
+            "query": "Traduce el siguiente texto del idioma {idioma_origen} al {idioma_traducido} manteniendo el significado y contexto lo más preciso posible: "
         },
         "resumen": {
             "numero_lineas": "5",
-            "idioma_traducido": "Español",
-            "query": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas: "
+            "query": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas, manteniendo los puntos clave y el sentido original: "
+        },
+        "evaluacion": {
+            "nivel_exigencia": "5",
+            "query": "Evalúa el siguiente contenido con un nivel de exigencia de {nivel_exigencia} sobre 10, proporcionando comentarios detallados sobre errores, mejoras, y calidad general. Finaliza con una calificación del 1 al 10: "
+        },
+        "explicacion_tecnica": {
+            "query": "Explica de forma clara y detallada los siguientes conceptos o temas, utilizando ejemplos si es necesario para hacer la explicación más comprensible: "
+        },
+        "generar_ideas": {
+            "query": "Genera una lista de ideas creativas o soluciones posibles para el siguiente desafío o problema, considerando diferentes enfoques: "
+        },
+        "generar_critica": {
+            "query": "Genera una crítica constructiva sobre el siguiente contenido, destacando tanto los aspectos positivos como las áreas de mejora: "
+        },
+        "recomendaciones": {
+            "query": "Proporciona recomendaciones basadas en el siguiente análisis, enfocándote en mejorar el rendimiento, la eficiencia o la calidad del proyecto: "
+        },
+        "completar_codigo": {
+            "lenguaje": "Python",
+            "query": "Completa el siguiente fragmento de código en {lenguaje} para que funcione correctamente según el propósito que se indica: "
+        },
+        "generar_documentacion": {
+            "query": "Genera documentación clara y concisa para el siguiente código o proyecto, incluyendo una descripción general, instrucciones de uso, y ejemplos: "
+        },
+        "analisis_de_datos": {
+            "query": "Analiza los siguientes datos y proporciona una interpretación detallada, incluyendo posibles tendencias, correlaciones y conclusiones relevantes: "
+        },
+        "optimizar_codigo": {
+            "lenguaje": "Python",
+            "query": "Optimiza el siguiente código en {lenguaje} para mejorar su rendimiento, legibilidad y eficiencia, haciendo los cambios necesarios: "
         }
     }
 }
