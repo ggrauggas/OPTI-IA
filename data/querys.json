@@ -1,0 +1,27 @@
+{
+    "querys": {
+        "solo_codigo":{
+            "idioma":"Español",
+            "query": ""
+        }, 
+        "parafraseo_formal":{
+            "idioma":"Español",
+            "query": ""
+        },   
+        "correccion":{
+            "idioma":"Español",
+            "query": ""
+        },
+        "translate":{
+            "idioma_origen":"",
+            "idioma_traducido":"",
+            "query":""
+        },
+        "resumen":{
+            "numero_lineas":"",
+            "idioma_traducido":"",
+            "query":""
+        }
+    
+    }
+}
