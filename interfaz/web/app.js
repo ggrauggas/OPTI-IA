@@ -1,90 +1,59 @@
-// Configuración de Firebase
-const firebaseConfig = {
+// Función para alternar la visibilidad de la contraseña (Inicio de sesión)
+function togglePassword() {
+    const passwordField = document.getElementById('login-password');
+    const passwordIcon = document.getElementById('toggle-password');
 
-    apiKey: "AIzaSyAh-WoG_7mToEy2JTkwrH1ZricDrxlcRAY",
-    authDomain: "opti-ia.firebaseapp.com",
-    projectId: "opti-ia",
-    storageBucket: "opti-ia.firebasestorage.app",
-    messagingSenderId: "87487071548",
-    appId: "1:87487071548:web:0fb8a844f0ec192b884a39",
-    measurementId: "G-8LZ9HK46TH"
-  };
-
-
-// Inicializa Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-// Función para registrar un nuevo usuario
-function registerUser() {
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Usuario creado exitosamente
-            const user = userCredential.user;
-            alert("Registro exitoso, por favor revisa tu correo para verificar tu cuenta.");
-            sendVerificationEmail();
-        })
-        .catch((error) => {
-            alert("Error: " + error.message);
-        });
+    // Cambiar el tipo de input entre 'password' y 'text'
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        passwordIcon.classList.remove('fa-eye');
+        passwordIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordField.type = 'password';
+        passwordIcon.classList.remove('fa-eye-slash');
+        passwordIcon.classList.add('fa-eye');
+    }
 }
 
-// Función para iniciar sesión
+// Función para alternar la visibilidad de la contraseña (Registro)
+function toggleRegisterPassword() {
+    const passwordField = document.getElementById('register-password');
+    const passwordIcon = document.getElementById('toggle-register-password');
+
+    // Cambiar el tipo de input entre 'password' y 'text'
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        passwordIcon.classList.remove('fa-eye');
+        passwordIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordField.type = 'password';
+        passwordIcon.classList.remove('fa-eye-slash');
+        passwordIcon.classList.add('fa-eye');
+    }
+}
+
+// Abrir el popup de registro
+function openRegisterPopup() {
+    document.getElementById('register-popup').style.display = 'flex';
+}
+
+// Cerrar el popup de registro
+function closeRegisterPopup() {
+    document.getElementById('register-popup').style.display = 'none';
+}
+
+// Función para manejar el inicio de sesión (aquí debes agregar la lógica de Firebase)
 function loginUser() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
-
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            if (user.emailVerified) {
-                alert("Inicio de sesión exitoso");
-            } else {
-                alert("Por favor verifica tu correo antes de continuar.");
-            }
-        })
-        .catch((error) => {
-            alert("Error: " + error.message);
-        });
+    console.log("Intentando iniciar sesión con: ", email, password);
+    // Aquí va tu código de autenticación con Firebase
 }
 
-// Función para enviar correo de verificación
-function sendVerificationEmail() {
-    const user = auth.currentUser;
-    if (user && !user.emailVerified) {
-        user.sendEmailVerification()
-            .then(() => {
-                alert("Correo de verificación enviado.");
-            })
-            .catch((error) => {
-                alert("Error al enviar correo de verificación: " + error.message);
-            });
-    } else {
-        alert("Ya has verificado tu correo.");
-    }
+// Función para manejar el registro (aquí debes agregar la lógica de Firebase)
+function registerUser() {
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    console.log("Registrando usuario con: ", email, password);
+    // Aquí va tu código de registro con Firebase
 }
-
-// Función para cerrar sesión
-function logoutUser() {
-    auth.signOut()
-        .then(() => {
-            alert("Sesión cerrada");
-        })
-        .catch((error) => {
-            alert("Error al cerrar sesión: " + error.message);
-        });
-}
-
-// Escucha cambios en el estado de autenticación
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        if (user.emailVerified) {
-            document.getElementById('auth-container').innerHTML = `<h3>Bienvenido, ${user.email}</h3>`;
-        } else {
-            document.getElementById('verification-message').innerText = "Tu cuenta no está verificada.";
-        }
-    }
-});
