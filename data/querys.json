@@ -1,27 +1,26 @@
 {
     "querys": {
-        "solo_codigo":{
-            "idioma":"Español",
-            "query": ""
+        "solo_codigo": {
+            "idioma": "Español",
+            "query": "Genera únicamente el código necesario para esta tarea sin explicaciones ni comentarios: "
         }, 
-        "parafraseo_formal":{
-            "idioma":"Español",
-            "query": ""
+        "parafraseo_formal": {
+            "idioma": "Español",
+            "query": "Reescribe el siguiente texto en un tono formal y profesional: "
         },   
-        "correccion":{
-            "idioma":"Español",
-            "query": ""
+        "correccion": {
+            "idioma": "Español",
+            "query": "Corrige los errores ortográficos y gramaticales en el siguiente texto: "
         },
-        "translate":{
-            "idioma_origen":"",
-            "idioma_traducido":"",
-            "query":""
+        "translate": {
+            "idioma_origen": "Detectar",
+            "idioma_traducido": "Español",
+            "query": "Traduce el siguiente texto del {idioma_origen} al {idioma_traducido}: "
         },
-        "resumen":{
-            "numero_lineas":"",
-            "idioma_traducido":"",
-            "query":""
+        "resumen": {
+            "numero_lineas": "5",
+            "idioma_traducido": "Español",
+            "query": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas: "
         }
-    
     }
 }
