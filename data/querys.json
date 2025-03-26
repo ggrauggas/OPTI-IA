@@ -1,54 +1,54 @@
 {
     "idioma": "Español",
-    "querys": {
+    "prompts": {
         "solo_codigo": {
             "lenguaje": "Python",
-            "query": "Genera únicamente el código necesario para esta tarea en el lenguaje {lenguaje}, sin explicaciones. Si es necesario, agrega comentarios directamente en el código para facilitar su comprensión: "
+            "prompt": "Genera únicamente el código necesario para esta tarea en el lenguaje {lenguaje}, sin explicaciones. Si es necesario, agrega comentarios directamente en el código para facilitar su comprensión: "
         }, 
         "parafraseo_formal": {
-            "query": "Reescribe el siguiente texto de manera formal y profesional, manteniendo el significado original y mejorando la estructura: "
+            "prompt": "Reescribe el siguiente texto de manera formal y profesional, manteniendo el significado original y mejorando la estructura: "
         },   
         "correccion": {
-            "query": "Corrige los errores ortográficos, gramaticales y de estilo en el siguiente texto. Asegúrate de que sea coherente y fluido: "
+            "prompt": "Corrige los errores ortográficos, gramaticales y de estilo en el siguiente texto. Asegúrate de que sea coherente y fluido: "
         },
         "translate": {
             "idioma_origen": "Detectar",
             "idioma_traducido": "Español",
-            "query": "Traduce el siguiente texto del idioma {idioma_origen} al {idioma_traducido} manteniendo el significado y contexto lo más preciso posible: "
+            "prompt": "Traduce el siguiente texto del idioma {idioma_origen} al {idioma_traducido} manteniendo el significado y contexto lo más preciso posible: "
         },
         "resumen": {
             "numero_lineas": "5",
-            "query": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas, manteniendo los puntos clave y el sentido original: "
+            "prompt": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas, manteniendo los puntos clave y el sentido original: "
         },
         "evaluacion": {
             "nivel_exigencia": "5",
-            "query": "Evalúa el siguiente contenido con un nivel de exigencia de {nivel_exigencia} sobre 10, proporcionando comentarios detallados sobre errores, mejoras, y calidad general. Finaliza con una calificación del 1 al 10: "
+            "prompt": "Evalúa el siguiente contenido con un nivel de exigencia de {nivel_exigencia} sobre 10, proporcionando comentarios detallados sobre errores, mejoras, y calidad general. Finaliza con una calificación del 1 al 10: "
         },
         "explicacion_tecnica": {
-            "query": "Explica de forma clara y detallada los siguientes conceptos o temas, utilizando ejemplos si es necesario para hacer la explicación más comprensible: "
+            "prompt": "Explica de forma clara y detallada los siguientes conceptos o temas, utilizando ejemplos si es necesario para hacer la explicación más comprensible: "
         },
         "generar_ideas": {
-            "query": "Genera una lista de ideas creativas o soluciones posibles para el siguiente desafío o problema, considerando diferentes enfoques: "
+            "prompt": "Genera una lista de ideas creativas o soluciones posibles para el siguiente desafío o problema, considerando diferentes enfoques: "
         },
         "generar_critica": {
-            "query": "Genera una crítica constructiva sobre el siguiente contenido, destacando tanto los aspectos positivos como las áreas de mejora: "
+            "prompt": "Genera una crítica constructiva sobre el siguiente contenido, destacando tanto los aspectos positivos como las áreas de mejora: "
         },
         "recomendaciones": {
-            "query": "Proporciona recomendaciones basadas en el siguiente análisis, enfocándote en mejorar el rendimiento, la eficiencia o la calidad del proyecto: "
+            "prompt": "Proporciona recomendaciones basadas en el siguiente análisis, enfocándote en mejorar el rendimiento, la eficiencia o la calidad del proyecto: "
         },
         "completar_codigo": {
             "lenguaje": "Python",
-            "query": "Completa el siguiente fragmento de código en {lenguaje} para que funcione correctamente según el propósito que se indica: "
+            "prompt": "Completa el siguiente fragmento de código en {lenguaje} para que funcione correctamente según el propósito que se indica: "
         },
         "generar_documentacion": {
-            "query": "Genera documentación clara y concisa para el siguiente código o proyecto, incluyendo una descripción general, instrucciones de uso, y ejemplos: "
+            "prompt": "Genera documentación clara y concisa para el siguiente código o proyecto, incluyendo una descripción general, instrucciones de uso, y ejemplos: "
         },
         "analisis_de_datos": {
-            "query": "Analiza los siguientes datos y proporciona una interpretación detallada, incluyendo posibles tendencias, correlaciones y conclusiones relevantes: "
+            "prompt": "Analiza los siguientes datos y proporciona una interpretación detallada, incluyendo posibles tendencias, correlaciones y conclusiones relevantes: "
         },
         "optimizar_codigo": {
             "lenguaje": "Python",
-            "query": "Optimiza el siguiente código en {lenguaje} para mejorar su rendimiento, legibilidad y eficiencia, haciendo los cambios necesarios: "
+            "prompt": "Optimiza el siguiente código en {lenguaje} para mejorar su rendimiento, legibilidad y eficiencia, haciendo los cambios necesarios: "
         }
     }
 }

@@ -3,113 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Principal</title>
+    <title>OPTI-IA | Panel de Control</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="menustyles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </head>
 <body>
-    <!-- Botón de opciones en la esquina superior derecho -->
-    <button id="options-btn" onclick="toggleOptionsMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Menú desplegable -->
-    <div id="options-menu" class="hidden">
-        <ul>
-            <li onclick="accionPerfil()">Perfil</li>
-            <li onclick="accionConfiguracion()">Configuración</li>
-            <li onclick="cerrarSesion()">Cerrar sesión</li>
-        </ul>
-    </div>
-
-    <!-- Título principal -->
-    <h1>Bienvenido al Menú Principal</h1>
-
-    <!-- Contenedor centrado -->
-    <div class="content-box">
-        <p>Aquí puedes acceder a todas las funciones de OPTI-IA.</p>
-
-        <!-- Contenedor de botones en una fila -->
-        <div class="button-container">
-            <div class="button-group">
-                <p>Accede al sistema de monitoreo en tiempo real.</p>
-                <button onclick="accion1()">PORTAPAPELES</button>
-            </div>
-            <div class="button-group">
-                <p>Gestiona los parámetros y configuración del sistema.</p>
-                <button onclick="abrirPopup2()">PROMPTS</button>
-            </div>
-            <div class="button-group">
-                <p>Revisa informes detallados y reportes del sistema.</p>
-                <button onclick="abrirPopup1()">APIs</button>
+    <!-- Header -->
+    <header class="header">
+        <h1>OPTI-IA: Panel de Control</h1>
+        <div class="user-menu">
+            <button class="user-btn" onclick="toggleUserMenu()">
+                <i class="fas fa-user-cog"></i>
+            </button>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <ul>
+                    <li onclick="accionPerfil()"><i class="fas fa-user"></i> Perfil</li>
+                    <li onclick="accionConfiguracion()"><i class="fas fa-cog"></i> Configuración</li>
+                    <li onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
+                </ul>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Popup para informes -->
-    <div id="popup" class="popup hidden">
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-box">
+            <p class="welcome-text">Bienvenido al sistema OPTI-IA. Seleccione una opción para comenzar.</p>
+        </div>
+
+        <!-- Button Grid -->
+        <div class="button-grid">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-clipboard"></i>
+                </div>
+                <h3>PORTAPAPELES</h3>
+                <p>Accede al sistema de monitoreo en tiempo real.</p>
+                <button class="card-btn" onclick="accion1()">Acceder</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>PROMPTS</h3>
+                <p>Gestiona los parámetros y configuración del sistema.</p>
+                <button class="card-btn" onclick="abrirPopup2()">Configurar</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h3>APIs</h3>
+                <p>Revisa informes detallados y reportes del sistema.</p>
+                <button class="card-btn" onclick="abrirPopup1()">Conectar</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- API Selection Popup -->
+    <div id="apiPopup" class="popup">
         <div class="popup-content">
+            <span class="close-btn" onclick="cerrarPopup()">&times;</span>
             <h2>Selecciona una IA</h2>
             
-            <!-- Opciones de informes con marco y alineadas en columna -->
-            <div class="option" onclick="seleccionarOpcion(this, 'diario')">
-                ChatGPT
-                <!-- Radio buttons ocultos -->
-                <input type="radio" name="api" value="diario">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, 'semanal')">
-                Gemini
-                <input type="radio" name="api" value="semanal">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, 'mensual')">
-                DeepSeek
-                <input type="radio" name="api" value="mensual">
+            <div class="option-grid">
+                <div class="option-card" onclick="seleccionarOpcion(this, 'chatgpt')">
+                    <i class="fab fa-openai"></i>
+                    <span>ChatGPT</span>
+                    <input type="radio" name="api" value="chatgpt">
+                </div>
+                
+                <div class="option-card" onclick="seleccionarOpcion(this, 'gemini')">
+                    <i class="fas fa-robot"></i>
+                    <span>Gemini</span>
+                    <input type="radio" name="api" value="gemini">
+                </div>
+                
+                <div class="option-card" onclick="seleccionarOpcion(this, 'deepseek')">
+                    <i class="fas fa-brain"></i>
+                    <span>DeepSeek</span>
+                    <input type="radio" name="api" value="deepseek">
+                </div>
             </div>
 
-            <textarea id="comentarios" placeholder="Introduzca su API..."></textarea>
+            <textarea id="apiKeyInput" placeholder="Introduzca su API key..."></textarea>
 
-            <button onclick="confirmarInforme()">Confirmar</button>
-            <button class="close-btn" onclick="cerrarPopup()">Cerrar</button>
+            <div class="popup-actions">
+                <button class="confirm-btn" onclick="confirmarInforme()">Confirmar</button>
+                <button class="cancel-btn" onclick="cerrarPopup()">Cancelar</button>
+            </div>
         </div>
     </div>
 
-    <!-- Popup para informes -->
-    <div id="popup2" class="popup hidden">
-        <div class="popup-content">
-            <h2>Selecciona un PROMPT MODE</h2>
-            
-            
-            <!-- Opciones de informes con marco y alineadas en columna -->
-            <div class="option" onclick="seleccionarOpcion(this, '1')">
-                OnlyCode
-                <input type="radio" name="api" value="1">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, '2')">
-                Parafraseo Formal
-                <input type="radio" name="api" value="2">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, '3')">
-                Traductor
-                <input type="radio" name="api" value="3">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, '4')">
-                Optimizar codigo
-                <!-- Radio buttons ocultos -->
-                <input type="radio" name="api" value="4">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, '5')">
-                Resumen
-                <input type="radio" name="api" value="5">
-            </div>
-            <div class="option" onclick="seleccionarOpcion(this, '6')">
-                Correccion
-                <input type="radio" name="api" value="6">
-            </div>
 
-            <textarea id="comentarios" placeholder="Introduzca su API..."></textarea>
-
-            <button onclick="confirmarInforme()">Confirmar</button>
-            <button class="close-btn" onclick="cerrarPopup2()">Cerrar</button>
+    
+    <div id="promptPopup" class="popup">
+        <div class="popup-content prompt-popup-content">
+            <span class="close-btn" onclick="cerrarPopup2()">&times;</span>
+            <div class="prompt-header">
+                <h2><i class="fas fa-magic"></i> Configuración de Prompt</h2>
+                <p class="prompt-subtitle">Selecciona y personaliza el tipo de prompt que necesitas</p>
+            </div>
+            
+            <div class="prompt-selection">
+                <div class="select-wrapper">
+                    <i class="fas fa-caret-down select-icon"></i>
+                    <select id="promptType" class="prompt-select" onchange="cambiarPrompt()">
+                        <option value="">-- Selecciona un tipo de prompt --</option>
+                        <option value="solo_codigo">Solo código</option>
+                        <option value="parafraseo_formal">Parafraseo formal</option>
+                        <option value="correccion">Corrección</option>
+                        <option value="translate">Traducción</option>
+                        <option value="resumen">Resumen</option>
+                        <option value="evaluacion">Evaluación</option>
+                        <option value="explicacion_tecnica">Explicación técnica</option>
+                        <option value="generar_ideas">Generar ideas</option>
+                        <option value="generar_critica">Generar crítica</option>
+                        <option value="recomendaciones">Recomendaciones</option>
+                        <option value="completar_codigo">Completar código</option>
+                        <option value="generar_documentacion">Generar documentación</option>
+                        <option value="analisis_de_datos">Análisis de datos</option>
+                        <option value="optimizar_codigo">Optimizar código</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div id="configOptions" class="config-options hidden">
+                <!-- Aquí se mostrarán las opciones configurables -->
+            </div>
+    
+            <div class="prompt-preview-container">
+                <div class="section-header">
+                    <h3><i class="fas fa-eye"></i> Vista previa del prompt</h3>
+                    <button class="copy-btn" onclick="copiarPrompt()">
+                        <i class="far fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div id="generatedPrompt" class="generated-prompt"></div>
+            </div>
+    
+            <div class="user-input-container">
+                <div class="section-header">
+                    <h3><i class="fas fa-edit"></i> Tu texto</h3>
+                    <span class="char-counter" id="charCounter">0/1000</span>
+                </div>
+                <textarea id="userInput" placeholder="Introduce tu texto aquí..." maxlength="1000" 
+                        oninput="actualizarContador()"></textarea>
+            </div>
+    
+            <div class="popup-actions">
+                <button class="confirm-btn" onclick="usarPrompt()">
+                    <i class="fas fa-paper-plane"></i> Usar Prompt
+                </button>
+                <button class="cancel-btn" onclick="cerrarPopup2()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
         </div>
     </div>
 
