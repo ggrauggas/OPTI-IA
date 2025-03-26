@@ -28,7 +28,7 @@ function abrirPopup(popupId) {
         document.getElementById('configOptions').classList.add('hidden');
         document.getElementById('generatedPrompt').textContent = '';
         document.getElementById('userInput').value = '';
-        document.getElementById('charCounter').textContent = '0/1000';
+        document.getElementById('charCounter').textContent = '0/10.000';
     }
 }
 
@@ -226,7 +226,7 @@ function actualizarContador() {
     const textarea = document.getElementById('userInput');
     const charCounter = document.getElementById('charCounter');
     const count = textarea.value.length;
-    charCounter.textContent = `${count}/1000`;
+    charCounter.textContent = `${count}/10.000`;
     
     // Cambiar color si se acerca al límite
     if (count > 900) {
@@ -265,7 +265,7 @@ function abrirPopup2() {
     document.getElementById('configOptions').classList.add('hidden');
     document.getElementById('generatedPrompt').textContent = '';
     document.getElementById('userInput').value = '';
-    document.getElementById('charCounter').textContent = '0/1000';
+    document.getElementById('charCounter').textContent = '0/10.000';
     popup.classList.add('show');
 }
 

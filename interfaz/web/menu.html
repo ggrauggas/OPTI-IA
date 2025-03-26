@@ -18,7 +18,7 @@
             </button>
             <div class="dropdown-menu" id="dropdownMenu">
                 <ul>
-                    <li onclick="accionPerfil()"><i class="fas fa-user"></i> Perfil</li>
+                    <li onclick="accionPerfil()"><i class="fas fa-user"></i> Usuario</li>
                     <li onclick="accionConfiguracion()"><i class="fas fa-cog"></i> Configuración</li>
                     <li onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
                 </ul>
@@ -29,7 +29,7 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="welcome-box">
-            <p class="welcome-text">Bienvenido al sistema OPTI-IA. Seleccione una opción para comenzar.</p>
+            <p class="welcome-text">Bienvenido al sistema OPTI-IA. Seleccione una opción para realizar un uso de la IA optimizado y fiable.</p>
         </div>
 
         <!-- Button Grid -->
@@ -39,7 +39,7 @@
                     <i class="fas fa-clipboard"></i>
                 </div>
                 <h3>PORTAPAPELES</h3>
-                <p>Accede al sistema de monitoreo en tiempo real.</p>
+                <p>Realice una peticion con el contenido de su portapapeles.</p>
                 <button class="card-btn" onclick="accion1()">Acceder</button>
             </div>
             <div class="card">
@@ -47,7 +47,7 @@
                     <i class="fas fa-code"></i>
                 </div>
                 <h3>PROMPTS</h3>
-                <p>Gestiona los parámetros y configuración del sistema.</p>
+                <p>Realice una peticion a su IA con unos prompts competentes.</p>
                 <button class="card-btn" onclick="abrirPopup('promptPopup')">Configurar</button>
             </div>
             
@@ -56,7 +56,7 @@
                     <i class="fas fa-plug"></i>
                 </div>
                 <h3>APIs</h3>
-                <p>Revisa informes detallados y reportes del sistema.</p>
+                <p>Seleccione y configure la API de la IA que desee utilizar.</p>
                 <button class="card-btn" onclick="abrirPopup('apiPopup')">Conectar</button>
             </div>
 
@@ -133,15 +133,15 @@
             <div class="section-header">
                 <h3><i class="fas fa-eye"></i> Vista previa del prompt</h3>
             </div>
-            <div id="generatedPrompt" class="generated-prompt"></div>
+            <p class="prompt-subtitle">Pulse aqui para ver una vista previa de un prompt</p>
         </div>
 
         <div class="user-input-container">
             <div class="section-header">
                 <h3><i class="fas fa-edit"></i> Tu texto</h3>
-                <span class="char-counter" id="charCounter">0/1000</span>
+                <span class="char-counter" id="charCounter">0/10.000</span>
             </div>
-            <textarea id="userInput" placeholder="Introduce tu texto aquí..." maxlength="1000" 
+            <textarea id="userInput" placeholder="Introduce tu texto aquí..." maxlength="10000" 
                     oninput="actualizarContador()"></textarea>
         </div>
 
