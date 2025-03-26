@@ -17,16 +17,63 @@ window.onclick = function(event) {
     }
 }
 
-// Funciones para los popups
-function abrirPopup1() {
-    const popup = document.getElementById('apiPopup');
+// Funciones para los popups (genérica)
+function abrirPopup(popupId) {
+    const popup = document.getElementById(popupId);
     popup.classList.add('show');
+    
+    // Reset específico para cada popup
+    if (popupId === 'promptPopup') {
+        document.getElementById('promptType').value = '';
+        document.getElementById('configOptions').classList.add('hidden');
+        document.getElementById('generatedPrompt').textContent = '';
+        document.getElementById('userInput').value = '';
+        document.getElementById('charCounter').textContent = '0/1000';
+    }
 }
 
-function cerrarPopup() {
-    const popup = document.getElementById('apiPopup');
+function cerrarPopup(popupId) {
+    const popup = document.getElementById(popupId);
     popup.classList.remove('show');
 }
+
+// Funciones específicas para abrir popups (manteniendo compatibilidad)
+function abrirApiPopup() {
+    abrirPopup('apiPopup');
+}
+
+function abrirPromptPopup() {
+    abrirPopup('promptPopup');
+}
+
+// Seleccionar opción en los popups
+function seleccionarOpcion(element, value) {
+    const options = element.parentElement.querySelectorAll('.option-card');
+    options.forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    const radio = element.querySelector('input[type="radio"]');
+    radio.checked = true;
+}
+
+// Funciones de los botones del menú
+function accionPerfil() {
+    alert('Perfil seleccionado');
+}
+
+function accionConfiguracion() {
+    alert('Configuración seleccionada');
+}
+
+function cerrarSesion() {
+    alert('Sesión cerrada');
+    // Aquí iría la lógica para cerrar sesión
+}
+
+function confirmarInforme() {
+    alert('Configuración confirmada');
+    cerrarPopup('apiPopup');
+}
+
 // Añade este objeto al principio del archivo
 const promptsData = {
     "idioma": "Español",
@@ -272,25 +319,3 @@ function seleccionarOpcion(element, value) {
     radio.checked = true;
 }
 
-// Funciones de los botones del menú
-function accionPerfil() {
-    alert('Perfil seleccionado');
-}
-
-function accionConfiguracion() {
-    alert('Configuración seleccionada');
-}
-
-function cerrarSesion() {
-    alert('Sesión cerrada');
-    // Aquí iría la lógica para cerrar sesión
-}
-
-function accion1() {
-    alert('Acción 1 ejecutada');
-}
-
-function confirmarInforme() {
-    alert('Configuración confirmada');
-    // Aquí iría la lógica para procesar la selección
-}
