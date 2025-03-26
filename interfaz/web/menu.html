@@ -4,11 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Principal</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="menustyles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </head>
 <body>
+    <!-- Botón de opciones en la esquina superior derecho -->
+    <button id="options-btn" onclick="toggleOptionsMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Menú desplegable -->
+    <div id="options-menu" class="hidden">
+        <ul>
+            <li onclick="accionPerfil()">Perfil</li>
+            <li onclick="accionConfiguracion()">Configuración</li>
+            <li onclick="cerrarSesion()">Cerrar sesión</li>
+        </ul>
+    </div>
+
+    <!-- Título principal -->
     <h1>Bienvenido al Menú Principal</h1>
-    <p>Aquí puedes acceder a todas las funciones de OPTI-IA.</p>
-    <a href="index.html">Cerrar sesión</a>
+
+    <!-- Contenedor centrado -->
+    <div class="content-box">
+        <p>Aquí puedes acceder a todas las funciones de OPTI-IA.</p>
+
+        <!-- Contenedor de botones en una fila -->
+        <div class="button-container">
+            <div class="button-group">
+                <p>Accede al sistema de monitoreo en tiempo real.</p>
+                <button onclick="accion1()">PORTAPAPELES</button>
+            </div>
+            <div class="button-group">
+                <p>Gestiona los parámetros y configuración del sistema.</p>
+                <button onclick="abrirPopup2()">PROMPTS</button>
+            </div>
+            <div class="button-group">
+                <p>Revisa informes detallados y reportes del sistema.</p>
+                <button onclick="abrirPopup1()">APIs</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup para informes -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <h2>Selecciona una IA</h2>
+            
+            <!-- Opciones de informes con marco y alineadas en columna -->
+            <div class="option" onclick="seleccionarOpcion(this, 'diario')">
+                ChatGPT
+                <!-- Radio buttons ocultos -->
+                <input type="radio" name="api" value="diario">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, 'semanal')">
+                Gemini
+                <input type="radio" name="api" value="semanal">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, 'mensual')">
+                DeepSeek
+                <input type="radio" name="api" value="mensual">
+            </div>
+
+            <textarea id="comentarios" placeholder="Introduzca su API..."></textarea>
+
+            <button onclick="confirmarInforme()">Confirmar</button>
+            <button class="close-btn" onclick="cerrarPopup()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Popup para informes -->
+    <div id="popup2" class="popup hidden">
+        <div class="popup-content">
+            <h2>Selecciona un PROMPT MODE</h2>
+            
+            
+            <!-- Opciones de informes con marco y alineadas en columna -->
+            <div class="option" onclick="seleccionarOpcion(this, '1')">
+                OnlyCode
+                <input type="radio" name="api" value="1">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, '2')">
+                Parafraseo Formal
+                <input type="radio" name="api" value="2">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, '3')">
+                Traductor
+                <input type="radio" name="api" value="3">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, '4')">
+                Optimizar codigo
+                <!-- Radio buttons ocultos -->
+                <input type="radio" name="api" value="4">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, '5')">
+                Resumen
+                <input type="radio" name="api" value="5">
+            </div>
+            <div class="option" onclick="seleccionarOpcion(this, '6')">
+                Correccion
+                <input type="radio" name="api" value="6">
+            </div>
+
+            <textarea id="comentarios" placeholder="Introduzca su API..."></textarea>
+
+            <button onclick="confirmarInforme()">Confirmar</button>
+            <button class="close-btn" onclick="cerrarPopup2()">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

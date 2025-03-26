@@ -1,0 +1,210 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+/* Estilos del botón de menú */
+#options-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilos del menú desplegable */
+#options-menu {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: none;
+}
+
+#options-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#options-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+}
+
+#options-menu ul li:hover {
+    background: #f0f0f0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Contenedor centrado */
+.content-box {
+    width: 60%;
+    background: white;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de botones en fila */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilos para cada botón con su descripción */
+.button-group {
+    text-align: center;
+    width: 30%;
+}
+
+.button-group p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Botones */
+.button-group button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos del Popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);  /* Fondo transparente oscuro */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup content */
+.popup-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-50px);
+}
+
+/* Efecto al abrir el popup */
+.popup.show .popup-content {
+    transform: translateY(0);
+}
+
+/* Títulos y descripción del popup */
+.popup h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo de las opciones dentro del popup (sin círculos, con marco y selección visual clara) */
+.popup .option {
+    display: block; /* Las opciones están alineadas en columna */
+    margin: 10px auto; /* Centramos y damos espacio entre las opciones */
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 90%; /* Aseguramos que todas las opciones tengan el mismo tamaño */
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center; /* Centramos el texto de las opciones */
+    position: relative; /* Necesario para posicionar el borde de selección */
+}
+
+/* Cambia el fondo y el borde cuando se selecciona una opción */
+.popup .option.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+/* Ocultamos el input radio, ya no será visible */
+.popup input[type="radio"] {
+    display: none;
+}
+
+/* Estilo de las opciones al pasar el ratón por encima */
+.popup .option:hover {
+    background-color: #f0f0f0;
+}
+
+/* Campo de texto */
+.popup textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+/* Botones del Popup */
+.popup button {
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+.popup .close-btn {
+    background-color: red;
+}
+
+.popup .close-btn:hover {
+    background-color: darkred;
+}
