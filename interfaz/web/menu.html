@@ -59,102 +59,126 @@
                 <p>Seleccione y configure la API de la IA que desee utilizar.</p>
                 <button class="card-btn" onclick="abrirPopup('apiPopup')">Conectar</button>
             </div>
-
-<!-- API Selection Popup -->
-<div id="apiPopup" class="popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="cerrarPopup('apiPopup')">&times;</span>
-        <h2>Selecciona una IA</h2>
-        
-        <div class="option-grid">
-            <div class="option-card" onclick="seleccionarOpcion(this, 'chatgpt')">
-                <i class="fab fa-openai"></i>
-                <span>ChatGPT</span>
-                <input type="radio" name="api" value="chatgpt">
-            </div>
-            
-            <div class="option-card" onclick="seleccionarOpcion(this, 'gemini')">
-                <i class="fas fa-robot"></i>
-                <span>Gemini</span>
-                <input type="radio" name="api" value="gemini">
-            </div>
-            
-            <div class="option-card" onclick="seleccionarOpcion(this, 'deepseek')">
-                <i class="fas fa-brain"></i>
-                <span>DeepSeek</span>
-                <input type="radio" name="api" value="deepseek">
-            </div>
         </div>
 
-        <textarea id="apiKeyInput" placeholder="Introduzca su API key..."></textarea>
+        <!-- API Selection Popup -->
+        <div id="apiPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="cerrarPopup('apiPopup')">&times;</span>
+                <h2>Selecciona una IA</h2>
+                
+                <div class="option-grid">
+                    <div class="option-card" onclick="seleccionarOpcion(this, 'chatgpt')">
+                        <i class="fab fa-openai"></i>
+                        <span>ChatGPT</span>
+                        <input type="radio" name="api" value="chatgpt">
+                    </div>
+                    
+                    <div class="option-card" onclick="seleccionarOpcion(this, 'gemini')">
+                        <i class="fas fa-robot"></i>
+                        <span>Gemini</span>
+                        <input type="radio" name="api" value="gemini">
+                    </div>
+                    
+                    <div class="option-card" onclick="seleccionarOpcion(this, 'deepseek')">
+                        <i class="fas fa-brain"></i>
+                        <span>DeepSeek</span>
+                        <input type="radio" name="api" value="deepseek">
+                    </div>
+                </div>
 
-        <div class="popup-actions">
-            <button class="confirm-btn" onclick="confirmarInforme()">Confirmar</button>
-            <button class="cancel-btn" onclick="cerrarPopup('apiPopup')">Cancelar</button>
-        </div>
-    </div>
-</div>
+                <textarea id="apiKeyInput" placeholder="Introduzca su API key..."></textarea>
 
-<div id="promptPopup" class="popup">
-    <div class="popup-content prompt-popup-content">
-        <span class="close-btn" onclick="cerrarPopup('promptPopup')">&times;</span>
-        <div class="prompt-header">
-            <h2><i class="fas fa-magic"></i> Configuración de Prompt</h2>
-            <p class="prompt-subtitle">Selecciona y personaliza el tipo de prompt que necesitas</p>
-        </div>
-        
-        <div class="prompt-selection">
-            <div class="select-wrapper">
-                <i class="fas fa-caret-down select-icon"></i>
-                <select id="promptType" class="prompt-select" onchange="cambiarPrompt()">
-                    <option value="">-- Selecciona un tipo de prompt --</option>
-                    <option value="solo_codigo">Solo código</option>
-                    <option value="parafraseo_formal">Parafraseo formal</option>
-                    <option value="correccion">Corrección</option>
-                    <option value="translate">Traducción</option>
-                    <option value="resumen">Resumen</option>
-                    <option value="evaluacion">Evaluación</option>
-                    <option value="explicacion_tecnica">Explicación técnica</option>
-                    <option value="generar_ideas">Generar ideas</option>
-                    <option value="generar_critica">Generar crítica</option>
-                    <option value="recomendaciones">Recomendaciones</option>
-                    <option value="completar_codigo">Completar código</option>
-                    <option value="generar_documentacion">Generar documentación</option>
-                    <option value="analisis_de_datos">Análisis de datos</option>
-                    <option value="optimizar_codigo">Optimizar código</option>
-                </select>
+                <div class="popup-actions">
+                    <button class="confirm-btn" onclick="confirmarInforme()">Confirmar</button>
+                    <button class="cancel-btn" onclick="cerrarPopup('apiPopup')">Cancelar</button>
+                </div>
             </div>
         </div>
 
-        <div id="configOptions" class="config-options hidden">
-        </div>
+        <!-- Prompt Configuration Popup -->
+        <div id="promptPopup" class="popup">
+            <div class="popup-content prompt-popup-content">
+                <span class="close-btn" onclick="cerrarPopup('promptPopup')">&times;</span>
+                <div class="prompt-header">
+                    <h2><i class="fas fa-magic"></i> Configuración de Prompt</h2>
+                    <p class="prompt-subtitle">Selecciona y personaliza el tipo de prompt que necesitas</p>
+                </div>
+                
+                <div class="prompt-selection">
+                    <div class="select-wrapper">
+                        <i class="fas fa-caret-down select-icon"></i>
+                        <select id="promptType" class="prompt-select" onchange="cambiarPrompt()">
+                            <option value="">-- Selecciona un tipo de prompt --</option>
+                            <option value="solo_codigo">Solo código</option>
+                            <option value="parafraseo_formal">Parafraseo formal</option>
+                            <option value="correccion">Corrección</option>
+                            <option value="translate">Traducción</option>
+                            <option value="resumen">Resumen</option>
+                            <option value="evaluacion">Evaluación</option>
+                            <option value="explicacion_tecnica">Explicación técnica</option>
+                            <option value="generar_ideas">Generar ideas</option>
+                            <option value="generar_critica">Generar crítica</option>
+                            <option value="recomendaciones">Recomendaciones</option>
+                            <option value="completar_codigo">Completar código</option>
+                            <option value="generar_documentacion">Generar documentación</option>
+                            <option value="analisis_de_datos">Análisis de datos</option>
+                            <option value="optimizar_codigo">Optimizar código</option>
+                        </select>
+                    </div>
+                </div>
 
-        <div class="prompt-preview-container">
-            <div class="section-header">
-                <h3><i class="fas fa-eye"></i> Vista previa del prompt</h3>
+                <div id="configOptions" class="config-options hidden">
+                    <!-- Aquí se mostrarán las opciones configurables -->
+                </div>
+
+                <div class="prompt-preview-container">
+                    <div class="section-header">
+                        <h3><i class="fas fa-eye"></i> Vista previa del prompt</h3>
+                    </div>
+                    <p class="prompt-subtitle">Pulse <span class="preview-link" onclick="abrirPreviewPrompt()">aquí</span> para ver una vista previa ampliada</p>
+                </div>
+
+                <div class="user-input-container">
+                    <div class="section-header">
+                        <h3><i class="fas fa-edit"></i> Tu texto</h3>
+                        <span class="char-counter" id="charCounter">0/10.000</span>
+                    </div>
+                    <textarea id="userInput" placeholder="Introduce tu texto aquí..." maxlength="10000" 
+                            oninput="actualizarContador()"></textarea>
+                </div>
+
+                <div class="popup-actions">
+                    <button class="confirm-btn" onclick="usarPrompt()">
+                        <i class="fas fa-paper-plane"></i> Usar Prompt
+                    </button>
+                    <button class="cancel-btn" onclick="cerrarPopup('promptPopup')">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
             </div>
-            <p class="prompt-subtitle">Pulse aqui para ver una vista previa de un prompt</p>
         </div>
 
-        <div class="user-input-container">
-            <div class="section-header">
-                <h3><i class="fas fa-edit"></i> Tu texto</h3>
-                <span class="char-counter" id="charCounter">0/10.000</span>
+        <!-- Preview Prompt Popup -->
+        <div id="previewPromptPopup" class="preview-popup">
+            <div class="preview-popup-content">
+                <div class="preview-header">
+                    <h3><i class="fas fa-expand"></i> Vista Previa Completa</h3>
+                    <button class="close-preview-btn" onclick="cerrarPopup('previewPromptPopup')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="previewPromptContent" class="preview-content">
+                    <!-- El contenido del prompt se insertará aquí -->
+                </div>
+                <div class="preview-actions">
+                    <button class="copy-btn" onclick="copiarPreviewPrompt()">
+                        <i class="far fa-copy"></i> Copiar
+                    </button>
+                </div>
             </div>
-            <textarea id="userInput" placeholder="Introduce tu texto aquí..." maxlength="10000" 
-                    oninput="actualizarContador()"></textarea>
         </div>
-
-        <div class="popup-actions">
-            <button class="confirm-btn" onclick="usarPrompt()">
-                <i class="fas fa-paper-plane"></i> Usar Prompt
-            </button>
-            <button class="cancel-btn" onclick="cerrarPopup('promptPopup')">
-                <i class="fas fa-times"></i> Cancelar
-            </button>
-        </div>
-    </div>
-</div>
+    </main>
 
     <script src="script.js"></script>
 </body>

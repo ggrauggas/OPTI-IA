@@ -15,7 +15,114 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+ /* Estilos para el enlace de vista previa (sin subrayado) */
+    .preview-link {
+        color: #3498db;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    .preview-link:hover {
+        color: #2980b9;
+    }
+    
+    /* Estilos específicos para el popup de vista previa */
+    .preview-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1001;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .preview-popup.show {
+        display: flex;
+    }
+    
+    .preview-popup-content {
+        background-color: white;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 800px;
+        max-height: 80vh;
+        padding: 20px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.3s;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .close-preview-btn {
+        background: none;
+        border: none;
+        color: #7f8c8d;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    
+    .close-preview-btn:hover {
+        color: #e74c3c;
+    }
+    
+    .preview-content {
+        background-color: #f8f9fa;
+        border: 1px solid #e1e4e8;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px 0;
+        overflow-y: auto;
+        flex-grow: 1;
+        font-family: 'Courier New', Courier, monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        line-height: 1.6;
+    }
+    
+    .preview-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .preview-actions .copy-btn {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .preview-actions .close-btn {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--light-blue);
@@ -434,7 +541,7 @@ textarea:focus {
     width: 100%;
     padding: 0.6rem;
     margin-bottom: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #ee2424;
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
 }

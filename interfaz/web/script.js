@@ -1,90 +1,14 @@
-// Función para mostrar/ocultar el menú de usuario
-function toggleUserMenu() {
-    const menu = document.getElementById('dropdownMenu');
-    menu.classList.toggle('show');
-}
-
-// Cerrar el menú si se hace clic fuera de él
-window.onclick = function(event) {
-    if (!event.target.matches('.user-btn')) {
-        const dropdowns = document.getElementsByClassName('dropdown-menu');
-        for (let i = 0; i < dropdowns.length; i++) {
-            const openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
-// Funciones para los popups (genérica)
-function abrirPopup(popupId) {
-    const popup = document.getElementById(popupId);
-    popup.classList.add('show');
-    
-    // Reset específico para cada popup
-    if (popupId === 'promptPopup') {
-        document.getElementById('promptType').value = '';
-        document.getElementById('configOptions').classList.add('hidden');
-        document.getElementById('generatedPrompt').textContent = '';
-        document.getElementById('userInput').value = '';
-        document.getElementById('charCounter').textContent = '0/10.000';
-    }
-}
-
-function cerrarPopup(popupId) {
-    const popup = document.getElementById(popupId);
-    popup.classList.remove('show');
-}
-
-// Funciones específicas para abrir popups (manteniendo compatibilidad)
-function abrirApiPopup() {
-    abrirPopup('apiPopup');
-}
-
-function abrirPromptPopup() {
-    abrirPopup('promptPopup');
-}
-
-// Seleccionar opción en los popups
-function seleccionarOpcion(element, value) {
-    const options = element.parentElement.querySelectorAll('.option-card');
-    options.forEach(opt => opt.classList.remove('selected'));
-    element.classList.add('selected');
-    const radio = element.querySelector('input[type="radio"]');
-    radio.checked = true;
-}
-
-// Funciones de los botones del menú
-function accionPerfil() {
-    alert('Perfil seleccionado');
-}
-
-function accionConfiguracion() {
-    alert('Configuración seleccionada');
-}
-
-function cerrarSesion() {
-    alert('Sesión cerrada');
-    // Aquí iría la lógica para cerrar sesión
-}
-
-function confirmarInforme() {
-    alert('Configuración confirmada');
-    cerrarPopup('apiPopup');
-}
-
-// Añade este objeto al principio del archivo
+// Objeto de prompts
 const promptsData = {
     "idioma": "Español",
     "prompts": {
         "solo_codigo": {
             "lenguaje": "Python",
             "prompt": "Genera únicamente el código necesario para esta tarea en el lenguaje {lenguaje}, sin explicaciones. Si es necesario, agrega comentarios directamente en el código para facilitar su comprensión: "
-        }, 
+        },
         "parafraseo_formal": {
             "prompt": "Reescribe el siguiente texto de manera formal y profesional, manteniendo el significado original y mejorando la estructura: "
-        },   
+        },
         "correccion": {
             "prompt": "Corrige los errores ortográficos, gramaticales y de estilo en el siguiente texto. Asegúrate de que sea coherente y fluido: "
         },
@@ -130,20 +54,65 @@ const promptsData = {
     }
 };
 
-// Función para cambiar el prompt según la selección
+// Funciones para el menú de usuario
+function toggleUserMenu() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.classList.toggle('show');
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('.user-btn')) {
+        const dropdowns = document.getElementsByClassName('dropdown-menu');
+        for (let i = 0; i < dropdowns.length; i++) {
+            const openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+// Funciones para los popups
+function abrirPopup(popupId) {
+    const popup = document.getElementById(popupId);
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    if (popupId === 'promptPopup') {
+        // Resetear el formulario de prompts
+        document.getElementById('promptType').value = '';
+        document.getElementById('configOptions').classList.add('hidden');
+        document.getElementById('generatedPrompt').textContent = '';
+        document.getElementById('userInput').value = '';
+        document.getElementById('charCounter').textContent = '0/10.000';
+    }
+}
+
+function cerrarPopup(popupId) {
+    document.getElementById(popupId).classList.remove('show');
+    document.body.style.overflow = 'auto';
+}
+
+function seleccionarOpcion(element, value) {
+    const options = element.parentElement.querySelectorAll('.option-card');
+    options.forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    const radio = element.querySelector('input[type="radio"]');
+    radio.checked = true;
+}
+
+// Funciones para el popup de prompts
 function cambiarPrompt() {
     const promptType = document.getElementById('promptType').value;
     const configOptions = document.getElementById('configOptions');
-    const generatedPrompt = document.getElementById('generatedPrompt');
     
     if (!promptType) {
         configOptions.classList.add('hidden');
-        generatedPrompt.textContent = '';
+        document.getElementById('generatedPrompt').textContent = '';
         return;
     }
     
     const promptConfig = promptsData.prompts[promptType];
-    let promptText = promptConfig.prompt;
     
     // Mostrar opciones configurables
     configOptions.innerHTML = '';
@@ -186,11 +155,11 @@ function cambiarPrompt() {
                 if (key === 'nivel_exigencia' || key === 'numero_lineas') {
                     input.type = 'number';
                     input.min = '1';
-                    input.max = '10';
+                    if (key === 'nivel_exigencia') input.max = '10';
                 }
             }
             
-            input.addEventListener('change', actualizarPrompt);
+            input.addEventListener('input', actualizarPrompt);
             
             optionDiv.appendChild(label);
             optionDiv.appendChild(input);
@@ -198,11 +167,9 @@ function cambiarPrompt() {
         }
     }
     
-    // Actualizar el prompt inicial
     actualizarPrompt();
 }
 
-// Función para actualizar el prompt con las configuraciones
 function actualizarPrompt() {
     const promptType = document.getElementById('promptType').value;
     if (!promptType) return;
@@ -210,7 +177,6 @@ function actualizarPrompt() {
     const promptConfig = promptsData.prompts[promptType];
     let promptText = promptConfig.prompt;
     
-    // Reemplazar variables en el prompt
     for (const [key, value] of Object.entries(promptConfig)) {
         if (key !== 'prompt') {
             const input = document.getElementById(`config_${key}`);
@@ -221,55 +187,43 @@ function actualizarPrompt() {
     
     document.getElementById('generatedPrompt').textContent = promptText;
 }
-// Función para actualizar el contador de caracteres
+
+function abrirPreviewPrompt() {
+    actualizarPrompt();
+    const promptContent = document.getElementById('generatedPrompt').textContent;
+    
+    if (!promptContent.trim()) {
+        alert('Por favor selecciona y configura un tipo de prompt primero');
+        return;
+    }
+    
+    document.getElementById('previewPromptContent').textContent = promptContent;
+    document.getElementById('previewPromptPopup').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function copiarPreviewPrompt() {
+    const previewContent = document.getElementById('previewPromptContent').textContent;
+    navigator.clipboard.writeText(previewContent).then(() => {
+        alert('Prompt copiado al portapapeles');
+    });
+}
+
 function actualizarContador() {
     const textarea = document.getElementById('userInput');
     const charCounter = document.getElementById('charCounter');
     const count = textarea.value.length;
     charCounter.textContent = `${count}/10.000`;
     
-    // Cambiar color si se acerca al límite
-    if (count > 900) {
+    if (count > 9000) {
         charCounter.style.color = '#e74c3c';
-    } else if (count > 750) {
+    } else if (count > 7500) {
         charCounter.style.color = '#f39c12';
     } else {
         charCounter.style.color = '';
     }
 }
 
-// Función para copiar el prompt al portapapeles
-function copiarPrompt() {
-    const promptText = document.getElementById('generatedPrompt').textContent;
-    if (!promptText.trim()) {
-        alert('No hay prompt para copiar');
-        return;
-    }
-    
-    navigator.clipboard.writeText(promptText).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        btn.innerHTML = '<i class="fas fa-check"></i> Copiado';
-        btn.classList.add('copied');
-        
-        setTimeout(() => {
-            btn.innerHTML = '<i class="far fa-copy"></i> Copiar';
-            btn.classList.remove('copied');
-        }, 2000);
-    });
-}
-
-// Inicializar el contador al abrir el popup
-function abrirPopup2() {
-    const popup = document.getElementById('promptPopup');
-    document.getElementById('promptType').value = '';
-    document.getElementById('configOptions').classList.add('hidden');
-    document.getElementById('generatedPrompt').textContent = '';
-    document.getElementById('userInput').value = '';
-    document.getElementById('charCounter').textContent = '0/10.000';
-    popup.classList.add('show');
-}
-
-// Función para usar el prompt generado
 function usarPrompt() {
     const promptType = document.getElementById('promptType').value;
     const userInput = document.getElementById('userInput').value;
@@ -286,36 +240,29 @@ function usarPrompt() {
     }
     
     const fullPrompt = generatedPrompt + '\n\n' + userInput;
-    
-    // Aquí puedes hacer lo que necesites con el prompt completo
     console.log('Prompt completo:', fullPrompt);
     alert('Prompt generado con éxito. Ver la consola para ver el resultado.');
-    
-    cerrarPopup2();
+    cerrarPopup('promptPopup');
 }
 
-// Modifica la función abrirPopup2 para resetear el formulario
-function abrirPopup2() {
-    const popup = document.getElementById('promptPopup');
-    document.getElementById('promptType').value = '';
-    document.getElementById('configOptions').classList.add('hidden');
-    document.getElementById('generatedPrompt').textContent = '';
-    document.getElementById('userInput').value = '';
-    popup.classList.add('show');
+// Funciones de los botones del menú
+function accionPerfil() {
+    alert('Perfil seleccionado');
 }
 
-
-// Seleccionar opción en los popups
-function seleccionarOpcion(element, value) {
-    // Deseleccionar todas las opciones primero
-    const options = element.parentElement.querySelectorAll('.option-card');
-    options.forEach(opt => opt.classList.remove('selected'));
-    
-    // Seleccionar la opción clickeada
-    element.classList.add('selected');
-    
-    // Marcar el radio button correspondiente
-    const radio = element.querySelector('input[type="radio"]');
-    radio.checked = true;
+function accionConfiguracion() {
+    alert('Configuración seleccionada');
 }
 
+function cerrarSesion() {
+    alert('Sesión cerrada');
+}
+
+function confirmarInforme() {
+    alert('Configuración confirmada');
+    cerrarPopup('apiPopup');
+}
+
+function accion1() {
+    alert('Acción 1 seleccionada');
+}
