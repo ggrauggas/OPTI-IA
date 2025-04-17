@@ -1,57 +1,56 @@
-// Objeto de prompts
 const promptsData = {
-    "idioma": "Español",
-    "prompts": {
-        "solo_codigo": {
-            "lenguaje": "Python",
-            "prompt": "Genera únicamente el código necesario para esta tarea en el lenguaje {lenguaje}, sin explicaciones. Si es necesario, agrega comentarios directamente en el código para facilitar su comprensión: "
-        },
-        "parafraseo_formal": {
-            "prompt": "Reescribe el siguiente texto de manera formal y profesional, manteniendo el significado original y mejorando la estructura: "
-        },
-        "correccion": {
-            "prompt": "Corrige los errores ortográficos, gramaticales y de estilo en el siguiente texto. Asegúrate de que sea coherente y fluido: "
-        },
-        "translate": {
-            "idioma_origen": "Detectar",
-            "idioma_traducido": "Español",
-            "prompt": "Traduce el siguiente texto del idioma {idioma_origen} al {idioma_traducido} manteniendo el significado y contexto lo más preciso posible: "
-        },
-        "resumen": {
-            "numero_lineas": "5",
-            "prompt": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas, manteniendo los puntos clave y el sentido original: "
-        },
-        "evaluacion": {
-            "nivel_exigencia": "5",
-            "prompt": "Evalúa el siguiente contenido con un nivel de exigencia de {nivel_exigencia} sobre 10, proporcionando comentarios detallados sobre errores, mejoras, y calidad general. Finaliza con una calificación del 1 al 10: "
-        },
-        "explicacion_tecnica": {
-            "prompt": "Explica de forma clara y detallada los siguientes conceptos o temas, utilizando ejemplos si es necesario para hacer la explicación más comprensible: "
-        },
-        "generar_ideas": {
-            "prompt": "Genera una lista de ideas creativas o soluciones posibles para el siguiente desafío o problema, considerando diferentes enfoques: "
-        },
-        "generar_critica": {
-            "prompt": "Genera una crítica constructiva sobre el siguiente contenido, destacando tanto los aspectos positivos como las áreas de mejora: "
-        },
-        "recomendaciones": {
-            "prompt": "Proporciona recomendaciones basadas en el siguiente análisis, enfocándote en mejorar el rendimiento, la eficiencia o la calidad del proyecto: "
-        },
-        "completar_codigo": {
-            "lenguaje": "Python",
-            "prompt": "Completa el siguiente fragmento de código en {lenguaje} para que funcione correctamente según el propósito que se indica: "
-        },
-        "generar_documentacion": {
-            "prompt": "Genera documentación clara y concisa para el siguiente código o proyecto, incluyendo una descripción general, instrucciones de uso, y ejemplos: "
-        },
-        "analisis_de_datos": {
-            "prompt": "Analiza los siguientes datos y proporciona una interpretación detallada, incluyendo posibles tendencias, correlaciones y conclusiones relevantes: "
-        },
-        "optimizar_codigo": {
-            "lenguaje": "Python",
-            "prompt": "Optimiza el siguiente código en {lenguaje} para mejorar su rendimiento, legibilidad y eficiencia, haciendo los cambios necesarios: "
-        }
+  "idioma": "Español",
+  "prompts": {
+    "solo_codigo": {
+      "lenguaje": "Python",
+      "prompt": "Escribe únicamente el código necesario en {lenguaje} para realizar la siguiente tarea. No incluyas explicaciones ni texto adicional. Usa comentarios en el código solo si son necesarios para entender la lógica."
+    },
+    "parafraseo_formal": {
+      "prompt": "Reescribe el siguiente texto con un tono formal y profesional. Conserva el significado original y mejora la redacción, la claridad y la estructura:"
+    },
+    "correccion": {
+      "prompt": "Revisa y corrige el siguiente texto, eliminando errores ortográficos, gramaticales y de estilo. Asegúrate de que sea claro, coherente y fluido:"
+    },
+    "translate": {
+      "idioma_origen": "Detectar",
+      "idioma_traducido": "Español",
+      "prompt": "Traduce el siguiente texto del idioma {idioma_origen} al {idioma_traducido}. Mantén el significado original, el tono y el contexto:"
+    },
+    "resumen": {
+      "numero_lineas": "5",
+      "prompt": "Resume el siguiente texto en aproximadamente {numero_lineas} líneas, destacando los puntos clave y conservando el sentido general:"
+    },
+    "evaluacion": {
+      "nivel_exigencia": "5",
+      "prompt": "Evalúa el siguiente contenido con un nivel de exigencia de {nivel_exigencia} sobre 10. Señala errores, oportunidades de mejora, puntos fuertes y da una calificación final del 1 al 10, con justificación detallada:"
+    },
+    "explicacion_tecnica": {
+      "prompt": "Explica de forma clara, detallada y didáctica los siguientes conceptos o temas. Incluye ejemplos relevantes para facilitar su comprensión, si es necesario:"
+    },
+    "generar_ideas": {
+      "prompt": "Genera una lista de ideas creativas o soluciones viables para el siguiente problema o reto. Considera enfoques variados e innovadores:"
+    },
+    "generar_critica": {
+      "prompt": "Elabora una crítica constructiva del siguiente contenido, destacando fortalezas, debilidades y sugerencias concretas para su mejora:"
+    },
+    "recomendaciones": {
+      "prompt": "Proporciona recomendaciones claras y accionables basadas en el siguiente análisis. Enfócate en mejorar el rendimiento, la eficiencia o la calidad del proyecto:"
+    },
+    "completar_codigo": {
+      "lenguaje": "Python",
+      "prompt": "Completa el siguiente fragmento de código en {lenguaje}, asegurándote de que cumpla con el propósito indicado y funcione correctamente:"
+    },
+    "generar_documentacion": {
+      "prompt": "Genera documentación técnica clara y útil para el siguiente código o proyecto. Incluye: descripción general, instrucciones de uso, dependencias y ejemplos prácticos:"
+    },
+    "analisis_de_datos": {
+      "prompt": "Analiza los siguientes datos y ofrece una interpretación detallada. Identifica patrones, correlaciones, anomalías y conclusiones relevantes:"
+    },
+    "optimizar_codigo": {
+      "lenguaje": "Python",
+      "prompt": "Reescribe el siguiente código en {lenguaje} para optimizar su rendimiento, legibilidad y eficiencia. Explica brevemente los cambios si es necesario:"
     }
+  }
 };
 
 // Funciones para el menú de usuario
